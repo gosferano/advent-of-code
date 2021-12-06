@@ -4,13 +4,12 @@ from collections import deque
 
 def sim_school(school: deque, days: int) -> int:
     for day in range(days):
-        fresh_fish = school.popleft()
-        school.append(fresh_fish)
-        school[6] += fresh_fish
+        school.append(school.popleft())
+        school[6] += school[-1]
     return school
 
 
-def solve_input(input_path: str, days: int):
+def solve_input(input_path: str, days: int) -> int:
     with open(input_path, 'r') as infile:
         school = deque([0, 0, 0, 0, 0, 0, 0, 0, 0])
         for fish in infile.readline().split(','):
